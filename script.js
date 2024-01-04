@@ -27,20 +27,32 @@ function moviesApi(response) {
     let movieOverview = response[i]['overview'];
     let posterPath = response[i]['poster_path'];
     let voteAverage = response[i]['vote_average'];
-    // let id = response[i]['id'];
+    let id = response[i]['id'];
 
     let temp_hteml = `<div class="col">
-      <a href="#">
+      <a class="alink" data-linkBtn="${id}" href="#">
          <div class="card h-100">
            <img src="https://image.tmdb.org/t/p/w500${posterPath}" >
            <div class="card-body">
             <h5 class="card-title">${movieTitle}</h5>
             <p class="card-text">${movieOverview}</p>
           <p class="card-average">${voteAverage}</p>
-           </div>
-         </div>
-       </div>
-       </a>`;
+          </div>
+        </div>
+      </a>
+    </div>
+  `;
     cardList.insertAdjacentHTML('beforeend', temp_hteml);
+  }
+  let alink = document.querySelectorAll('.alink');
+
+  for (let j = 0; j < id.length; j++) {
+    alink.addEventListener('click', function (e) {
+      e.preventDefault(); //a태그 막아. Html도 클릭이라서 이중클릭됨.
+      let idfor = alink[j];
+      console.log(idfor);
+      const result = id.getAttribute('data-linkBtn');
+      alert(`ID명은 ${result} 입니다.`);
+    });
   }
 }
