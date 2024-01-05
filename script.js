@@ -46,7 +46,8 @@ function moviesApi(response) {
 }
 
 let inputformbtn = document.querySelector('.input-form-btn');
-inputformbtn.addEventListener('click', function () {
+inputformbtn.addEventListener('click', function (e) {
+  e.preventDefault();
   let inputform = document.querySelector('.input-form').value;
   let cards = document.querySelectorAll('.col');
   for (let i = 0; i < cards.length; i++) {
