@@ -41,7 +41,24 @@ function moviesApi(response) {
     </a> 
   </div>
 `;
-
     cardList.insertAdjacentHTML('beforeend', temp_hteml);
   }
 }
+
+let inputformbtn = document.querySelector('.input-form-btn');
+inputformbtn.addEventListener('click', function () {
+  let inputform = document.querySelector('.input-form').value;
+  let cards = document.querySelectorAll('.col');
+  for (let i = 0; i < cards.length; i++) {
+    let title =
+      cards[i].childNodes[1].childNodes[0].childNodes[3].childNodes[1] //자식요소 탐색 title까지 접근
+        .textContent;
+
+    if (!title.includes(inputform)) {
+      //제목에 검색한 값이 포함 되어 있는지 아닌지 includes
+      cards[i].style.display = 'none';
+    } else {
+      cards[i].style.display = 'block';
+    }
+  }
+});
