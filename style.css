@@ -47,11 +47,23 @@ button.input-form-btn {
   border-radius: 0.25rem;
 }
 .row {
+  width: 100%;
   --bs-gutter-x: 2rem;
   --bs-gutter-y: 1rem;
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   margin-top: calc(var(--bs-gutter-y) * -0.5);
   margin-right: calc(var(--bs-gutter-x) * -0.5);
   margin-left: calc(var(--bs-gutter-x) * -0.5);
 }
+.col {
+  width: 350px;
+}
+
+/* @media (max-width: 768px) {
+  .row > * {
+    display: flex;
+    justify-content: center;
+  }
+} */

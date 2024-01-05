@@ -51,7 +51,7 @@ inputformbtn.addEventListener('click', function () {
   let cards = document.querySelectorAll('.col');
   for (let i = 0; i < cards.length; i++) {
     let title =
-      cards[i].childNodes[1].childNodes[0].childNodes[3].childNodes[1] //자식요소 탐색 title까지 접근
+      cards[i].childNodes[1].childNodes[0].childNodes[3].childNodes[1]
         .textContent;
 
     if (!title.includes(inputform)) {
