@@ -48,18 +48,33 @@ function moviesApi(response) {
 let inputformbtn = document.querySelector('.input-form-btn');
 inputformbtn.addEventListener('click', function (e) {
   e.preventDefault();
-  let inputform = document.querySelector('.input-form').value;
+  let inputform = document
+    .querySelector('.input-form')
+    .value.replace(/\s/g, '');
   let cards = document.querySelectorAll('.col');
-  for (let i = 0; i < cards.length; i++) {
-    let title =
-      cards[i].childNodes[1].childNodes[0].childNodes[3].childNodes[1]
-        .textContent;
+  let serchNone = document.querySelector('.serchNone');
+  let serchresult = false;
 
-    if (!title.includes(inputform)) {
-      //제목에 검색한 값이 포함 되어 있는지 아닌지 includes
-      cards[i].style.display = 'none';
-    } else {
-      cards[i].style.display = 'block';
+  if (inputform === '') {
+    alert('검색어 입력해라');
+  } else {
+    for (let i = 0; i < cards.length; i++) {
+      let title = cards[
+        i
+      ].childNodes[1].childNodes[0].childNodes[3].childNodes[1].textContent.replace(
+        /\s/g,
+        ''
+      );
+
+      if (!title.includes(inputform)) {
+        //제목에 검색한 값이 포함 되어 있는지 아닌지 includes
+        cards[i].style.display = 'none';
+      } else {
+        cards[i].style.display = 'block';
+      }
+    }
+    if (!serchresult) {
+      serchNone.style.display = 'block';
     }
   }
 });
@@ -77,21 +92,21 @@ window.addEventListener('scroll', function () {
   }
 });
 
-// gotop.addEventListener('click', function (e) {
-//   e.preventDefault();
-//   window.scrollTo({
-//     top: 0,
-//     left: 0,
-//     behavior: 'smooth',
-//   });
-// });
-
-gotop.addEventListener('click', function () {
-  let timer = setInterval(function () {
-    if (scroll != 0) {
-      window.scrollBy(0, -50);
-    } else {
-      clearInterval(timer);
-    }
+gotop.addEventListener('click', function (e) {
+  e.preventDefault();
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: 'smooth',
   });
 });
+
+// gotop.addEventListener('click', function () {
+//   let timer = setInterval(function () {
+//     if (scroll != 0) {
+//       window.scrollBy(0, -50);
+//     } else {
+//       clearInterval(timer);
+//     }
+//   });
+// });
